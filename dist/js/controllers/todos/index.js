@@ -29,8 +29,11 @@ const addTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
         const todo = new todo_1.default({
-            name: body.name,
-            description: body.description,
+            firstname: body.firstname,
+            lastname: body.lastname,
+            email: body.email,
+            password: body.password,
+            age: body.age,
             status: body.status
         });
         const newTodo = yield todo.save();

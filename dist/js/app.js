@@ -15,10 +15,6 @@ app.use(express_1.default.json());
 app.use(routes_1.default);
 dotenv_1.default.config();
 const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rdx5pkn.mongodb.net/?retryWrites=true&w=majority`;
-// const options: ConnectOptions = {
-//   useUnifiedTopology: true,
-//   useFindAndModify: false, // Correct casing for useFindAndModify
-// };
 mongoose_1.default
     .connect(uri)
     .then(() => app.listen(PORT, () => console.log(`server running on port ${PORT}`)))

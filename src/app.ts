@@ -15,11 +15,6 @@ dotenv.config()
 
 const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rdx5pkn.mongodb.net/?retryWrites=true&w=majority`;
 
-// const options: ConnectOptions = {
-//   useUnifiedTopology: true,
-//   useFindAndModify: false, // Correct casing for useFindAndModify
-// };
-
 mongoose
   .connect(uri)
   .then(() =>

@@ -2,12 +2,24 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const todoSchema = new mongoose_1.Schema({
-    name: {
+    firstname: {
         type: String,
         required: true,
     },
-    descripton: {
+    lastname: {
         type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    age: {
+        type: Number,
         required: true,
     },
     status: {

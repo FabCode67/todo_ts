@@ -3,13 +3,25 @@ import { model, Schema } from "mongoose"
 
 const todoSchema : Schema = new Schema(
     {
-        name:{
+        firstname:{
             type: String,
             required: true,
         },
 
-        descripton: {
+        lastname: {
             type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+        },
+        password: {
+            type: String,
+            required: true,
+        },
+        age: {
+            type: Number,
             required: true,
         },
 

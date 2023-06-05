@@ -8,18 +8,20 @@ const getTodos =  async (req: Request, res: Response): Promise<void> => {
         res.status(200).json({ todos })
     } catch (error){
         console.log(error);
-        
         throw error
     }
 }
 
 const addTodo =  async (req: Request, res: Response): Promise<void> => {
     try{
-        const body = req.body as Pick<ITodo, "name" | "description" | "status" >
+        const body = req.body as Pick<ITodo, "firstname" | "lastname" | "email" | "password" | "age" | "status" >
 
         const todo : ITodo = new Todo({
-            name: body.name,
-            description: body.description,
+            firstname: body.firstname,
+            lastname: body.lastname,
+            email: body.email,
+            password: body.password,
+            age: body.age,
             status: body.status
         })
 
