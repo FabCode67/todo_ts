@@ -4,4 +4,5 @@ export default {
         name: "Todo CRUD operations", // name of a tag
       },
     ],
-  };
+  }; 
+  
