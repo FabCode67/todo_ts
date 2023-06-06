@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
+ "scripts": {
     "build": "tsc",
-    "start": "concurrently \"tsc -w\" \"node dist/js/app.js\"",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
-  },
+    "start": "tsc -w && node dist/js/app.js",
+    "dev": "tsc -w && nodemon dist/js/app.js"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
