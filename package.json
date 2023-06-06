@@ -2,11 +2,11 @@
   "name": "todo_ts_bn",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/js/app.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
+    "start": "npm run build && node dist/js/index.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/js/index.js\""
 },
   "keywords": [],
   "author": "",
