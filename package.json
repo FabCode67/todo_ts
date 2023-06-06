@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
- "scripts": {
+  "scripts": {
     "build": "tsc",
-    "start": "tsc -w && node dist/js/app.js",
-    "dev": "tsc -w && nodemon dist/js/app.js"
+    "start": "npm run build && node dist/js/app.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
 },
   "keywords": [],
   "author": "",
