@@ -3,7 +3,7 @@ import {defaultRoute, getTodos, addTodo, updateTodo, deleteTodo, getTodoById, cl
 
 const router : Router = Router()
 
-// router.get("/", defaultRoute)
+router.get("/", defaultRoute)
 router.get("/todos", getTodos)
 router.post("/add-todo", addTodo)
 router.put("/edit-todo/:id", updateTodo)
