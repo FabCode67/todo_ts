@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { getTodos, addTodo, updateTodo, deleteTodo, getTodoById, clearTodos } from "../controllers/todos";
+import {defaultRoute, getTodos, addTodo, updateTodo, deleteTodo, getTodoById, clearTodos } from "../controllers/todos";
 
 const router : Router = Router()
 
+router.get("/", defaultRoute)
 router.get("/todos", getTodos)
 router.post("/add-todo", addTodo)
 router.put("/edit-todo/:id", updateTodo)

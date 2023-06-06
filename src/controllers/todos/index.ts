@@ -4,6 +4,13 @@ import Todo from "../../models/todo";
 import bcrypt from "bcrypt"
 import { validate as isEmailValid } from 'email-validator';
 
+const defaultRoute =  async (req: Request, res: Response): Promise<void> => {
+    try{
+        res.status(200).json({status: "success", message: "Welcome to the todo ts API by Fab, please use /api-docs for more details."});
+    } catch (error){
+        throw error
+    }
+}
 const getTodos =  async (req: Request, res: Response): Promise<void> => {
     try{
         const todos: ITodo[] = await Todo.find()
@@ -135,4 +142,4 @@ const clearTodos =  async (req: Request, res: Response): Promise<void> => {
         throw error
     }
 }
-export { getTodos, addTodo, updateTodo, deleteTodo, getTodoById, clearTodos }
+export { defaultRoute, getTodos, addTodo, updateTodo, deleteTodo, getTodoById, clearTodos }
