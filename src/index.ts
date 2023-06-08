@@ -18,7 +18,13 @@ app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(docs));
 
 dotenv.config()
 
-const uri: string = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rdx5pkn.mongodb.net/?retryWrites=true&w=majority`;
+let uri: string;
+
+if (process.env.NODE_ENV === "test") {
+  uri = `mongodb+srv://${process.env.TEST_MONGO_USER}:${process.env.TEST_MONGO_PASSWORD}@todotstest.rdx5pkn.mongodb.net/?retryWrites=true&w=majority`;
+} else {
+  uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.rdx5pkn.mongodb.net/?retryWrites=true&w=majority`;
+}
 
 mongoose
   .connect(uri)
@@ -26,7 +32,7 @@ mongoose
     app.listen(PORT, () => console.log(`server running on port ${PORT}`))
   )
   .catch((error) => {
-    console.log(error);
-    
     throw error;
   });
+
+  export default app

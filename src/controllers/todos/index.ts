@@ -3,10 +3,11 @@ import { ITodo } from "../../types/todo";
 import Todo from "../../models/todo";
 import bcrypt from "bcrypt"
 import { validate as isEmailValid } from 'email-validator';
+import { log } from "console";
 
 const defaultRoute =  async (req: Request, res: Response): Promise<void> => {
     try{
-        res.status(200).json({status: "success", message: "Welcome to the todo ts API by Fab, please use /api-docs for more details."});
+        res.status(200).json({status: "success", message: "Welcome to the todo ts API by Fab, please use /api-docs for more details"});
     } catch (error){
         throw error
     }
@@ -20,8 +21,7 @@ const getTodos =  async (req: Request, res: Response): Promise<void> => {
         }
         res.status(200).json({ todos })
     } catch (error){
-        console.log(error);
-        throw error
+        res.status(5000).json({status: "fail", message: "internal server error"})
     }
 }
 
@@ -53,12 +53,23 @@ const addTodo =  async (req: Request, res: Response): Promise<void> => {
             return
         }
 
+        const newEmail = req.body.email;
+        const existingEmails: ITodo[] = await Todo.find({ email: newEmail });
+        
+        if (existingEmails.length > 0) {
+          res.status(401).json({
+            status: "fail",
+            message: "Email already exists",
+          });
+          return;
+        }
+        
         const hashedPassword = await bcrypt.hash(body.password, 10); // Hash the password
 
         const todo : ITodo = new Todo({
             firstname: body.firstname,
             lastname: body.lastname,
-            email: body.email,
+            email: newEmail,
             password: hashedPassword,
             age: body.age,
             status: body.status
@@ -66,11 +77,10 @@ const addTodo =  async (req: Request, res: Response): Promise<void> => {
 
         const newTodo: ITodo = await todo.save()
         const allTodos: ITodo[] = await Todo.find()
-
         res.status(201)
-        .json( { status: "fail", message: "Todo added", todo: newTodo, todos: allTodos})
+        .json( { status: "success", message: "Todo added", todo: newTodo, todos: allTodos})
     } catch (error) {
-        throw error
+        res.status(5000).json({status: "fail", message: "internal server error"})
     }
 }
 
@@ -136,7 +146,7 @@ const clearTodos =  async (req: Request, res: Response): Promise<void> => {
     try{
         await Todo.deleteMany({})
         const remainingTodos: ITodo[] = await Todo.find()
-        res.status(200).json({ status:"fail", message: "Todos cleared", todos: remainingTodos})
+        res.status(201).json({ status:"fail", message: "Todos cleared", todos: remainingTodos})
     }
     catch (error) {
         throw error

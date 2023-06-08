@@ -17,7 +17,7 @@ export default {
         '/clear-todos': {
             ...clearTodo,
         },
-        '/edit-todo': {
+        '/edit-todo/{id}': {
             ...updateTodo,
         },
         '/delete-todo': {
