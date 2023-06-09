@@ -42,7 +42,6 @@ describe("It shold add data to todo", () => {
             email: "fabrice@gmail__com",
             password: "fab!2Res",
             age: 21,
-            status: true
         })
         expect(res.status).to.equal(401)
         expect(res.body.message).to.equal("Please enter a valid email")
@@ -54,7 +53,6 @@ describe("It shold add data to todo", () => {
             email: "fabrice@gmail.com",
             password: "faes",
             age: 21,
-            status: true
         })
         expect(res.status).to.equal(401)
         expect(res.body.message).to.equal("Password must be at least 6 characters")
@@ -66,7 +64,6 @@ describe("It shold add data to todo", () => {
             email: "fabricei@gmail.com",
             password: "faeFgDs2s",
             age: 21,
-            status: true
         })
         expect(res.status).to.equal(201)
         expect(res.body.message).to.equal("Todo added")
@@ -78,7 +75,6 @@ describe("It shold add data to todo", () => {
             email: "fabricei@gmail.com",
             password: "faeFgDs2s",
             age: 21,
-            status: true
         })
         expect(res.status).to.equal(401)
         expect(res.body.message).to.equal("Email already exists")

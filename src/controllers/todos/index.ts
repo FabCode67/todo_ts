@@ -29,7 +29,7 @@ const addTodo =  async (req: Request, res: Response): Promise<void> => {
     try{
         const body = req.body as Pick<ITodo, "firstname" | "lastname" | "email" | "password" | "age" | "status" >
 
-        if(!body.firstname || !body.lastname || !body.email || !body.password || !body.age || body.status == null){
+        if(!body.firstname || !body.lastname || !body.email || !body.password || !body.age){
             res.status(401).json({
                 status: "fail",
                 message: "Please fill all fields"
@@ -72,7 +72,6 @@ const addTodo =  async (req: Request, res: Response): Promise<void> => {
             email: newEmail,
             password: hashedPassword,
             age: body.age,
-            status: body.status
         })
 
         const newTodo: ITodo = await todo.save()

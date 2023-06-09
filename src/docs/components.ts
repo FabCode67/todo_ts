@@ -37,11 +37,6 @@ export default {
               description: "Todo's age",
               example: 25,
             },
-            status: {
-              type: "boolean",
-              description: "The status of the todo",
-              example: false,
-            },
           },
         },
         Error: {
